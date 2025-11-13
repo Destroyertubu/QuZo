@@ -1,28 +1,36 @@
-/* CSS 变量 - 设计系统 */
+/* CSS 变量 - 设计系统（科技大屏风格） */
 :root {
-  /* 主色调 - 现代蓝紫渐变 */
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --primary-gradient-hover: linear-gradient(135deg, #7a8ef0 0%, #8b5cb5 100%);
-  --primary-color: #667eea;
-  --primary-light: #8b9eff;
-  --primary-dark: #5568d3;
+  /* 主色调 - 科技蓝 */
+  --primary-gradient: linear-gradient(135deg, #00d4ff 0%, #1890ff 100%);
+  --primary-gradient-hover: linear-gradient(135deg, #33ddff 0%, #40a9ff 100%);
+  --primary-color: #00d4ff;
+  --primary-light: #33ddff;
+  --primary-dark: #0099cc;
 
-  /* 背景色系 */
-  --bg-dark: #0a0e27;
-  --bg-gradient: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
-  --bg-card: rgba(255, 255, 255, 0.08);
-  --bg-card-hover: rgba(255, 255, 255, 0.12);
+  /* 次要强调色 - 橙黄 */
+  --secondary-color: #ffa500;
+  --secondary-gradient: linear-gradient(135deg, #ffaa00 0%, #ff6600 100%);
 
-  /* 玻璃态效果 */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.15);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* 背景色系 - 深色科技风 */
+  --bg-dark: #0a0e1a;
+  --bg-gradient: linear-gradient(180deg, #0a0e1a 0%, #0d1429 50%, #0a0e1a 100%);
+  --bg-card: rgba(13, 20, 41, 0.8);
+  --bg-card-hover: rgba(13, 20, 41, 0.95);
+
+  /* 科技面板效果 */
+  --glass-bg: rgba(13, 20, 41, 0.75);
+  --glass-border: rgba(0, 212, 255, 0.3);
+  --glass-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
 
   /* 文字颜色 */
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.85);
   --text-tertiary: rgba(255, 255, 255, 0.65);
   --text-disabled: rgba(255, 255, 255, 0.45);
+
+  /* 科技发光色 */
+  --glow-blue: #00d4ff;
+  --glow-orange: #ffa500;
 
   /* 状态色 */
   --success: #52c41a;
@@ -83,7 +91,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 背景动态效果 */
+/* 背景动态效果 - 科技网格 */
 body::before {
   content: '';
   position: fixed;
@@ -91,12 +99,39 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+  animation: gridMove 20s linear infinite;
+}
+
+/* 发光粒子效果 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background:
-    radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 165, 0, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
   animation: bgPulse 15s ease-in-out infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50px);
+  }
 }
 
 @keyframes bgPulse {
@@ -104,30 +139,31 @@ body::before {
     opacity: 1;
   }
   50% {
-    opacity: 0.6;
+    opacity: 0.7;
   }
 }
 
-/* 全局滚动条样式 - 现代设计 */
+/* 全局滚动条样式 - 科技风格 */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 1px solid rgba(0, 212, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--glass-bg);
-  border-radius: 10px;
-  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(0, 212, 255, 0.5) 0%, rgba(24, 144, 255, 0.5) 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
   transition: all var(--transition-base);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--glass-border);
-  box-shadow: var(--shadow-glow);
+  background: linear-gradient(180deg, rgba(0, 212, 255, 0.8) 0%, rgba(24, 144, 255, 0.8) 100%);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
 /* 通用玻璃态容器 */

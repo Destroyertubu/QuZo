@@ -91,13 +91,13 @@
 }
 
 .legend-color.farmland {
-  background: #4ECDC4;
-  border-color: #2FB8AC;
+  background: #FF0000;
+  border-color: #CC0000;
 }
 
 .legend-color.homestead {
-  background: #FF6B6B;
-  border-color: #E53935;
+  background: #0000FF;
+  border-color: #0000CC;
 }
 
 .map-type-toggle {

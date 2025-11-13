@@ -113,26 +113,6 @@ const LandMap: React.FC<LandMapProps> = ({ landPlots, onLandClick }) => {
 
       console.log('地图初始化完成');
 
-      // 添加中心标记 - 大河道乡西河道村
-      const marker = L.marker([centerLat, centerLng], {
-        title: '大河道乡西河道村'
-      }).addTo(map);
-
-      marker.bindPopup(`
-        <div style="text-align: center; padding: 8px;">
-          <h4 style="margin: 0 0 8px 0; color: #0066cc; font-size: 15px;">
-            📍 大河道乡西河道村
-          </h4>
-          <p style="margin: 4px 0; font-size: 13px; color: #666;">
-            曲周县大河道乡
-          </p>
-          <p style="margin: 4px 0; font-size: 12px; color: #999;">
-            经度: ${centerLng.toFixed(6)}°<br>
-            纬度: ${centerLat.toFixed(6)}°
-          </p>
-        </div>
-      `);
-
       // 清理函数
       return () => {
         if (mapInstanceRef.current) {
