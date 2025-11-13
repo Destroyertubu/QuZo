@@ -21,17 +21,35 @@ export function getSurnameBarChartOption(
       data: data.map(item => item.surname),
       axisLabel: {
         fontSize: isSmall ? 10 : 12,
-        rotate: isSmall ? 45 : 0
+        rotate: isSmall ? 45 : 0,
+        color: '#ffffff'
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.3)'
+        }
       }
     },
     yAxis: {
       type: 'value',
       name: '户数',
       nameTextStyle: {
-        fontSize: isSmall ? 10 : 12
+        fontSize: isSmall ? 10 : 12,
+        color: '#ffffff'
       },
       axisLabel: {
-        fontSize: isSmall ? 10 : 12
+        fontSize: isSmall ? 10 : 12,
+        color: '#ffffff'
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.3)'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        }
       }
     },
     series: [
@@ -84,7 +102,8 @@ export function getSurnamePieChartOption(
       left: 'right',
       top: 'center',
       textStyle: {
-        fontSize: 11
+        fontSize: 11,
+        color: '#ffffff'
       }
     },
     series: [
@@ -142,17 +161,35 @@ export function getAgeDistributionChartOption(
       type: 'category',
       data: ageGroups.map(item => item.name),
       axisLabel: {
-        fontSize: isSmall ? 10 : 12
+        fontSize: isSmall ? 10 : 12,
+        color: '#ffffff'
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.3)'
+        }
       }
     },
     yAxis: {
       type: 'value',
       name: '人数',
       nameTextStyle: {
-        fontSize: isSmall ? 10 : 12
+        fontSize: isSmall ? 10 : 12,
+        color: '#ffffff'
       },
       axisLabel: {
-        fontSize: isSmall ? 10 : 12
+        fontSize: isSmall ? 10 : 12,
+        color: '#ffffff'
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.3)'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        }
       }
     },
     series: [
@@ -206,7 +243,8 @@ export function getHomesteadAreaChartOption(
       left: 'right',
       top: 'center',
       textStyle: {
-        fontSize: 11
+        fontSize: 11,
+        color: '#ffffff'
       }
     },
     series: [
@@ -254,17 +292,35 @@ export function getPopulationTrendChartOption(
       type: 'category',
       data: years,
       axisLabel: {
-        fontSize: isSmall ? 10 : 12
+        fontSize: isSmall ? 10 : 12,
+        color: '#ffffff'
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.3)'
+        }
       }
     },
     yAxis: {
       type: 'value',
       name: '人口数',
       nameTextStyle: {
-        fontSize: isSmall ? 10 : 12
+        fontSize: isSmall ? 10 : 12,
+        color: '#ffffff'
       },
       axisLabel: {
-        fontSize: isSmall ? 10 : 12
+        fontSize: isSmall ? 10 : 12,
+        color: '#ffffff'
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.3)'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        }
       },
       min: 750
     },

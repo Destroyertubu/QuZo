@@ -203,16 +203,36 @@ const App: React.FC = () => {
     setChartType(undefined);
   };
 
+  // 处理户主点击，跳转到户籍列表
+  const handleHouseholderClick = (householderName: string) => {
+    // 先关闭当前的宅基地详情窗口
+    setDetailVisible(false);
+
+    // 延迟打开户籍列表，以便有平滑的过渡
+    setTimeout(() => {
+      setDetailType('household');
+      setDetailTitle('户籍列表');
+      setDetailData({
+        households,
+        highlightName: householderName // 传递需要高亮的户主名字
+      });
+      setDetailVisible(true);
+    }, 300);
+  };
+
   return (
     <Layout className="app-layout">
       <Header className="app-header">
         <div className="header-content">
           <div className="logo">
-            <span className="logo-icon">🏘️</span>
-            <h1>大河道乡数字乡村平台</h1>
+            <h1>曲周县大河道乡数字乡村平台</h1>
           </div>
           <div className="header-info">
-            <span className="village-name">西河道村</span>
+            <select className="village-name village-selector">
+              <option value="西河道村">西河道村</option>
+              <option value="无">（无）</option>
+              <option value="无2">（无）</option>
+            </select>
           </div>
         </div>
       </Header>
@@ -260,6 +280,7 @@ const App: React.FC = () => {
           data={detailData}
           chartType={chartType}
           onClose={handleDetailClose}
+          onHouseholderClick={handleHouseholderClick}
         />
       )}
 

@@ -145,3 +145,21 @@ export const xihedaoLandPlots: LandPlot[] = [
     area: 18000
   }
 ];
+
+/**
+ * 村委会数据
+ */
+export const villageCommittee: LandPlot = {
+  id: 'village-committee',
+  name: '西河道村村委会',
+  type: LandType.VILLAGE_COMMITTEE,
+  coordinates: [
+    { lng: 114.91612595, lat: 36.67881123 },
+    { lng: 114.91609651, lat: 36.67850598 },
+    { lng: 114.91629212, lat: 36.67850155 },
+    { lng: 114.91632156, lat: 36.67880035 },
+    { lng: 114.91613131, lat: 36.67881123 }
+  ],
+  area: 0,
+  color: '#FF0000'
+};

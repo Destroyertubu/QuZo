@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Table, Descriptions, Tag } from 'antd';
 import type { DetailType, ChartType, Household, VillageStatistics, SurnameDistribution } from '../types';
 import ChartCard from './ChartCard';
@@ -18,9 +18,37 @@ interface DetailWindowProps {
   data: any;
   chartType?: ChartType;
   onClose: () => void;
+  onHouseholderClick?: (householderName: string) => void;
 }
 
-const DetailWindow: React.FC<DetailWindowProps> = ({ visible, type, title, data, chartType, onClose }) => {
+const DetailWindow: React.FC<DetailWindowProps> = ({ visible, type, title, data, chartType, onClose, onHouseholderClick }) => {
+  // 管理户籍列表的分页状态
+  const [householdCurrentPage, setHouseholdCurrentPage] = useState(1);
+
+  // 当打开户籍列表且有高亮名字时，自动跳转到对应页码
+  useEffect(() => {
+    if (type === 'household' && data) {
+      const households = Array.isArray(data) ? data : data.households || [];
+      const highlightName = !Array.isArray(data) ? data.highlightName : null;
+
+      if (highlightName && households.length > 0) {
+        const pageSize = 10;
+        const index = households.findIndex((h: Household) => h.householder === highlightName);
+        if (index !== -1) {
+          const targetPage = Math.floor(index / pageSize) + 1;
+          console.log(`跳转到页码 ${targetPage}，户主：${highlightName}`);
+          setHouseholdCurrentPage(targetPage);
+        } else {
+          console.log(`未找到户主：${highlightName}`);
+          setHouseholdCurrentPage(1);
+        }
+      } else if (!highlightName) {
+        // 如果没有高亮名字，重置到第一页
+        setHouseholdCurrentPage(1);
+      }
+    }
+  }, [type, data]);
+
   // 渲染不同类型的详情内容
   const renderContent = () => {
     switch (type) {
@@ -112,7 +140,13 @@ const DetailWindow: React.FC<DetailWindowProps> = ({ visible, type, title, data,
   };
 
   // 渲染户籍列表
-  const renderHouseholdList = (households: Household[]) => {
+  const renderHouseholdList = (data: any) => {
+    // 兼容旧的直接传数组和新的传对象格式
+    const households = Array.isArray(data) ? data : data.households || [];
+    const highlightName = !Array.isArray(data) ? data.highlightName : null;
+
+    const pageSize = 10;
+
     const columns = [
       {
         title: '户ID',
@@ -125,6 +159,14 @@ const DetailWindow: React.FC<DetailWindowProps> = ({ visible, type, title, data,
         dataIndex: 'householder',
         key: 'householder',
         width: 100,
+        render: (name: string) => (
+          <span style={{
+            fontWeight: highlightName && name === highlightName ? 600 : 'normal',
+            color: highlightName && name === highlightName ? '#1890ff' : 'inherit'
+          }}>
+            {name}
+          </span>
+        ),
       },
       {
         title: '姓氏',
@@ -156,12 +198,22 @@ const DetailWindow: React.FC<DetailWindowProps> = ({ visible, type, title, data,
 
     return (
       <Table
+        key={highlightName || 'household-table'}
         columns={columns}
         dataSource={households}
         rowKey="id"
-        pagination={{ pageSize: 10, showSizeChanger: true, showTotal: (total) => `共 ${total} 户` }}
+        pagination={{
+          pageSize: pageSize,
+          current: householdCurrentPage,
+          showSizeChanger: true,
+          showTotal: (total) => `共 ${total} 户`,
+          onChange: (page) => setHouseholdCurrentPage(page)
+        }}
         scroll={{ y: 400 }}
         size="small"
+        rowClassName={(record) => {
+          return highlightName && record.householder === highlightName ? 'highlight-row' : '';
+        }}
       />
     );
   };
@@ -264,10 +316,52 @@ const DetailWindow: React.FC<DetailWindowProps> = ({ visible, type, title, data,
 
   // 渲染宅基地详情
   const renderHomesteadDetail = (homestead: any) => {
+    // 判断是否是村委会
+    if (homestead.type === 'village_committee') {
+      return (
+        <div style={{ textAlign: 'center', padding: '20px' }}>
+          <div style={{ fontSize: '48px', marginBottom: '16px' }}>⭐</div>
+          <h2 style={{ margin: '16px 0', color: '#FF0000', fontSize: '24px' }}>
+            {homestead.name || '西河道村村委会'}
+          </h2>
+          <p style={{ fontSize: '16px', color: '#666', marginTop: '16px' }}>
+            这是西河道村的行政管理中心，负责村务管理和为村民提供各项服务。
+          </p>
+          <div style={{
+            marginTop: '24px',
+            padding: '16px',
+            background: 'rgba(255, 0, 0, 0.05)',
+            borderRadius: '8px',
+            border: '1px solid rgba(255, 0, 0, 0.2)'
+          }}>
+            <p style={{ margin: '8px 0', color: '#333' }}>
+              <strong>📍 地址：</strong>河北省邯郸市曲周县大河道乡西河道村
+            </p>
+            <p style={{ margin: '8px 0', color: '#333' }}>
+              <strong>🏛️ 职能：</strong>村务管理、公共服务、政策宣传
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    // 普通宅基地
     return (
       <Descriptions bordered column={2}>
         <Descriptions.Item label="宅基地ID">{homestead.id}</Descriptions.Item>
-        <Descriptions.Item label="户主">{homestead.householder}</Descriptions.Item>
+        <Descriptions.Item label="户主">
+          <span
+            onClick={() => onHouseholderClick && onHouseholderClick(homestead.householder)}
+            style={{
+              color: '#1890ff',
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              fontWeight: 500
+            }}
+          >
+            {homestead.householder}
+          </span>
+        </Descriptions.Item>
         <Descriptions.Item label="面积">{homestead.area} 平方米</Descriptions.Item>
         <Descriptions.Item label="面积（亩）">
           {(homestead.area / 666.67).toFixed(2)} 亩

@@ -5,7 +5,8 @@
  */
 export enum LandType {
   FARMLAND = 'farmland',      // 农田
-  HOMESTEAD = 'homestead'      // 宅基地
+  HOMESTEAD = 'homestead',    // 宅基地
+  VILLAGE_COMMITTEE = 'village_committee'  // 村委会
 }
 
 /**

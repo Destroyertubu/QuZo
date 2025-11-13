@@ -45,24 +45,13 @@
   }
 }
 
-/* 四角装饰 */
-.app-header::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
-  border-top: 2px solid rgba(0, 212, 255, 0.6);
-  border-left: 2px solid rgba(0, 212, 255, 0.6);
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-}
 
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 100%;
+  position: relative;
 }
 
 .logo {
@@ -127,6 +116,10 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .village-name {
@@ -167,6 +160,65 @@
   transform: translateY(-2px);
   background: rgba(0, 212, 255, 0.15);
   color: #ffffff;
+}
+
+/* 村庄下拉选择器 */
+.village-selector {
+  font-size: 14px;
+  padding: 6px 12px 6px 32px;
+  min-width: 110px;
+  max-width: 150px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb(0, 212, 255)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: left 10px center;
+  background-size: 14px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.village-selector:hover {
+  border-color: rgba(0, 212, 255, 0.7);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.12);
+}
+
+.village-selector:focus {
+  outline: none;
+  border-color: rgba(0, 212, 255, 0.9);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.5),
+              inset 0 0 10px rgba(0, 212, 255, 0.1);
+  background: rgba(0, 212, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.village-selector:active {
+  transform: translateY(0);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4),
+              inset 0 0 8px rgba(0, 212, 255, 0.15);
+}
+
+.village-selector option {
+  background: #0a1929;
+  color: var(--glow-blue);
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.village-selector option:hover {
+  background: rgba(0, 212, 255, 0.2);
+  color: #ffffff;
+}
+
+.village-selector option:checked {
+  background: rgba(0, 212, 255, 0.25);
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* 主布局 - 三栏布局 */

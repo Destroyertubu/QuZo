@@ -568,3 +568,22 @@
   color: #666;
   margin-bottom: 8px;
 }
+
+/* 高亮行样式 */
+.highlight-row {
+  background-color: rgba(24, 144, 255, 0.1) !important;
+  animation: highlightFade 2s ease-in-out;
+}
+
+.highlight-row:hover {
+  background-color: rgba(24, 144, 255, 0.15) !important;
+}
+
+@keyframes highlightFade {
+  0% {
+    background-color: rgba(24, 144, 255, 0.3);
+  }
+  100% {
+    background-color: rgba(24, 144, 255, 0.1);
+  }
+}

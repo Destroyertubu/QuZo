@@ -155,20 +155,51 @@ const LandMap: React.FC<LandMapProps> = ({ landPlots, onLandClick }) => {
       );
 
       // 确定颜色 - 边框和填充使用相同颜色
-      // 大地块用红色，宅基地用蓝色
-      const plotColor = plot.type === 'farmland' ? '#FF0000' : '#0000FF';
+      // 大地块用红色，宅基地用蓝色，村委会用红色
+      let plotColor = '#FF0000'; // 默认红色（农田）
+      let fillOpacity = 0.3;
+
+      if (plot.type === 'homestead') {
+        plotColor = '#0000FF'; // 宅基地蓝色
+      } else if (plot.type === 'village_committee') {
+        plotColor = '#FF0000'; // 村委会红色
+        fillOpacity = 0.5; // 村委会填充稍微深一些
+      }
 
       // 创建多边形 - 填充和边框使用相同颜色
       const polygon = L.polygon(latlngs, {
         fillColor: plotColor,    // 填充颜色与边框相同
-        fillOpacity: 0.3,        // 透明度30%，可以看到底下的卫星图
+        fillOpacity: fillOpacity, // 透明度
         color: plotColor,        // 边框颜色
-        weight: 3,               // 边框宽度
+        weight: plot.type === 'village_committee' ? 4 : 3, // 村委会边框粗一些
         opacity: 1.0             // 边框完全不透明
       });
 
       // 添加到地图
       polygon.addTo(map);
+
+      // 如果是村委会，添加红色五角星标记
+      if (plot.type === 'village_committee') {
+        // 计算多边形中心点
+        const bounds = polygon.getBounds();
+        const center = bounds.getCenter();
+
+        // 创建自定义五角星HTML
+        const starIcon = L.divIcon({
+          html: '<div style="font-size: 32px; color: #FF0000; filter: drop-shadow(0 0 3px rgba(255,0,0,0.8)); text-align: center; line-height: 1;">⭐</div>',
+          className: 'village-committee-marker',
+          iconSize: [32, 32],
+          iconAnchor: [16, 16]
+        });
+
+        // 创建标记
+        const marker = L.marker(center, { icon: starIcon }).addTo(map);
+
+        // 点击标记也触发地块详情
+        marker.on('click', () => {
+          onLandClick(plot);
+        });
+      }
 
       // 保存引用
       polygonsRef.current[plot.id] = { polygon, plot };

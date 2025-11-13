@@ -5,6 +5,7 @@ import householdsData from '../data/processedHouseholds.json';
 import landPlotsData from '../data/processedLandPlots.json';
 import homesteadsData from '../data/processedHomesteads.json';
 import statisticsData from '../data/statistics.json';
+import { villageCommittee } from './csvParser';
 
 /**
  * 获取所有户籍信息
@@ -70,10 +71,10 @@ export function getVillageStatistics(): VillageStatistics {
 }
 
 /**
- * 获取所有地块（大地块+宅基地）
+ * 获取所有地块（大地块+宅基地+村委会）
  */
 export function getAllPlots(): (LandPlot | Homestead)[] {
-  return [...landPlotsData, ...homesteadsData] as (LandPlot | Homestead)[];
+  return [...landPlotsData, ...homesteadsData, villageCommittee] as (LandPlot | Homestead)[];
 }
 
 /**
