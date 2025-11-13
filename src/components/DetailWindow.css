@@ -1,0 +1,570 @@
+.detail-window :global(.ant-modal-body) {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.detail-content {
+  padding: 8px 0;
+}
+
+.detail-descriptions {
+  margin-bottom: 20px;
+}
+
+.surname-summary {
+  margin-top: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.surname-summary:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.surname-summary p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.population-charts {
+  margin-top: 24px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.population-charts h4 {
+  margin-bottom: 20px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1a2e;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  border-left: 4px solid var(--primary-color);
+  letter-spacing: -0.02em;
+  transition: all var(--transition-base);
+}
+
+.population-charts h4:hover {
+  color: var(--primary-color);
+  padding-left: 16px;
+}
+
+.surname-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.surname-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.surname-label {
+  min-width: 80px;
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--primary-gradient);
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.surname-bar-item:hover .rank {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+}
+
+.bar-container {
+  flex: 1;
+  height: 28px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.bar {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: var(--radius-lg);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.count-label {
+  min-width: 50px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+/* 自定义滚动条 */
+.detail-window :global(.ant-modal-body)::-webkit-scrollbar {
+  width: 8px;
+}
+
+.detail-window :global(.ant-modal-body)::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.detail-window :global(.ant-modal-body)::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.5);
+  border-radius: 4px;
+  transition: background var(--transition-fast);
+}
+
+.detail-window :global(.ant-modal-body)::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.7);
+}
+
+/* 村史村情 */
+.village-history .history-section {
+  margin-bottom: 24px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.village-history .history-section h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  border-left: 4px solid var(--primary-color);
+  letter-spacing: -0.02em;
+  transition: all var(--transition-base);
+}
+
+.village-history .history-section h4:hover {
+  color: var(--primary-color);
+  padding-left: 16px;
+}
+
+.village-history .history-section p {
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.village-history .history-section ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.village-history .history-section li {
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* 组织架构 */
+.organization .org-section {
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.organization .org-section h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  border-left: 4px solid var(--primary-color);
+  letter-spacing: -0.02em;
+  transition: all var(--transition-base);
+}
+
+.organization .org-section h4:hover {
+  color: var(--primary-color);
+  padding-left: 16px;
+}
+
+/* 土地概况 */
+.land-overview .land-info-section {
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.land-overview .land-info-section h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  border-left: 4px solid var(--primary-color);
+  letter-spacing: -0.02em;
+  transition: all var(--transition-base);
+}
+
+.land-overview .land-info-section h4:hover {
+  color: var(--primary-color);
+  padding-left: 16px;
+}
+
+.land-use-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.land-use-item {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(102, 126, 234, 0.15);
+  transition: all var(--transition-base);
+  cursor: default;
+  box-shadow: var(--shadow-sm);
+}
+
+.land-use-item:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.land-type-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: all var(--transition-base);
+}
+
+.land-use-item:hover .land-type-icon {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.land-type-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.land-type-desc {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.land-info-section ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.land-info-section li {
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* 作物分布 */
+.crop-distribution .crop-section {
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.crop-distribution .crop-section h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+  border-left: 4px solid var(--primary-color);
+  letter-spacing: -0.02em;
+  transition: all var(--transition-base);
+}
+
+.crop-distribution .crop-section h4:hover {
+  color: var(--primary-color);
+  padding-left: 16px;
+}
+
+.crop-distribution .crop-section ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.crop-distribution .crop-section li {
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* 党员统计 */
+.party-members .party-section {
+  margin-bottom: 20px;
+}
+
+.party-members .party-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3561;
+  margin-bottom: 12px;
+}
+
+.party-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.party-work-item {
+  text-align: center;
+  padding: 16px;
+  background: #fff9f0;
+  border-radius: 8px;
+  border: 1px solid #ffe7ba;
+}
+
+.work-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.work-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #d46b08;
+  margin-bottom: 8px;
+}
+
+.work-desc {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.6;
+}
+
+.party-members ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.party-members li {
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* 产业概况 */
+.industry-overview .industry-section {
+  margin-bottom: 20px;
+}
+
+.industry-overview .industry-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3561;
+  margin-bottom: 12px;
+}
+
+.employment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.employment-item {
+  text-align: center;
+  padding: 16px 8px;
+  background: #f0f5ff;
+  border-radius: 8px;
+  border: 1px solid #d6e4ff;
+}
+
+.employment-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.employment-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0050b3;
+  margin-bottom: 8px;
+}
+
+.employment-number {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1890ff;
+  margin-bottom: 8px;
+}
+
+.employment-desc {
+  font-size: 11px;
+  color: #999;
+  line-height: 1.4;
+}
+
+.industry-overview ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.industry-overview li {
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* 农业生产 */
+.agriculture .agriculture-section {
+  margin-bottom: 20px;
+}
+
+.agriculture .agriculture-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3561;
+  margin-bottom: 12px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.tech-item {
+  padding: 12px;
+  background: #f6ffed;
+  border-radius: 8px;
+  border: 1px solid #b7eb8f;
+}
+
+.tech-item p {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.agriculture ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.agriculture li {
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* 经济收入 */
+.economy .economy-section {
+  margin-bottom: 20px;
+}
+
+.economy .economy-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d3561;
+  margin-bottom: 12px;
+}
+
+.expense-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.expense-item {
+  text-align: center;
+  padding: 16px 8px;
+  background: #fff7e6;
+  border-radius: 8px;
+  border: 1px solid #ffd591;
+}
+
+.expense-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.expense-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ad6800;
+  margin-bottom: 8px;
+}
+
+.expense-desc {
+  font-size: 11px;
+  color: #999;
+  line-height: 1.4;
+}
+
+.economy ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.economy li {
+  line-height: 1.8;
+  color: #666;
+  margin-bottom: 8px;
+}

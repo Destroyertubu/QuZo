@@ -1,0 +1,162 @@
+.household-modal .ant-modal-content {
+  background: linear-gradient(180deg, rgba(15, 30, 48, 0.98) 0%, rgba(20, 35, 55, 0.98) 100%);
+  border: 2px solid rgba(45, 183, 245, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.household-modal .ant-modal-header {
+  background: linear-gradient(90deg, rgba(45, 183, 245, 0.3) 0%, rgba(45, 183, 245, 0.15) 100%);
+  border-bottom: 1px solid rgba(45, 183, 245, 0.4);
+}
+
+/* 强制Descriptions组件文字使用浅色 */
+.household-modal .ant-descriptions-item-label,
+.household-modal .ant-descriptions-item-content {
+  color: inherit !important;
+}
+
+.household-modal .ant-descriptions-item-label > *,
+.household-modal .ant-descriptions-item-content > * {
+  color: inherit !important;
+}
+
+/* Tag标签使用纯色背景 */
+.household-modal .ant-tag {
+  font-weight: 500;
+  border: none !important;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+/* 红色Tag - 党员标签 */
+.household-modal .ant-tag-red {
+  background: #ff7875 !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.household-modal .ant-tag-red * {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* 绿色Tag - 户主 */
+.household-modal .ant-tag-green {
+  background: #73d13d !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.household-modal .ant-tag-green * {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* 蓝色Tag - 其他关系 */
+.household-modal .ant-tag-blue {
+  background: #5ec8ff !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.household-modal .ant-tag-blue * {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.household-modal .modal-title {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e3f2fd;
+}
+
+.household-modal .ant-modal-close {
+  color: rgba(227, 242, 253, 0.75);
+}
+
+.household-modal .ant-modal-close:hover {
+  color: #e3f2fd;
+}
+
+.household-summary {
+  margin-bottom: 20px;
+}
+
+.household-summary .ant-descriptions {
+  background: transparent;
+}
+
+.household-summary .ant-descriptions-item-label {
+  color: rgba(177, 217, 255, 0.8) !important;
+  background: rgba(20, 35, 55, 0.6);
+  border-color: rgba(45, 183, 245, 0.3);
+}
+
+.household-summary .ant-descriptions-item-content {
+  color: rgba(227, 242, 253, 0.95) !important;
+  background: rgba(10, 20, 35, 0.5);
+  border-color: rgba(45, 183, 245, 0.3);
+}
+
+.household-summary .ant-descriptions-item-label span,
+.household-summary .ant-descriptions-item-content span {
+  color: inherit !important;
+}
+
+.household-summary .ant-descriptions-bordered .ant-descriptions-view {
+  border-color: rgba(45, 183, 245, 0.3);
+}
+
+.family-members-section {
+  margin-top: 16px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e3f2fd;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: linear-gradient(90deg, rgba(45, 183, 245, 0.4) 0%, rgba(45, 183, 245, 0.15) 100%);
+  border-left: 3px solid #2db7f5;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(45, 183, 245, 0.2);
+}
+
+.members-table .member-name {
+  display: flex;
+  align-items: center;
+  color: rgba(227, 242, 253, 0.95);
+}
+
+.members-table .id-card,
+.members-table .phone {
+  display: flex;
+  align-items: center;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(177, 217, 255, 0.85);
+}
+
+.members-table .ant-table {
+  background: transparent;
+}
+
+.members-table .ant-table-cell {
+  padding: 10px 8px;
+  background: rgba(10, 20, 35, 0.5);
+  border-color: rgba(45, 183, 245, 0.25);
+  color: rgba(227, 242, 253, 0.95) !important;
+}
+
+.members-table .ant-table-thead > tr > th {
+  background: rgba(20, 35, 55, 0.7);
+  font-weight: 600;
+  color: #e3f2fd !important;
+  border-color: rgba(45, 183, 245, 0.4);
+}
+
+.members-table .ant-table-tbody > tr:hover > td {
+  background: rgba(25, 45, 70, 0.6);
+}
+
+/* 普通文字继承浅色，但Tag除外 */
+.members-table .ant-table-cell > div > span:not(.ant-tag) {
+  color: inherit !important;
+}

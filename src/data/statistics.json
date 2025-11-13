@@ -1,0 +1,62 @@
+{
+  "totalHouseholds": 176,
+  "totalPopulation": 805,
+  "totalPartyMembers": 34,
+  "totalLandPlots": 11,
+  "totalHomesteads": 235,
+  "totalHomesteadArea": "90364.35",
+  "surnameDistribution": [
+    {
+      "surname": "苑",
+      "count": 67
+    },
+    {
+      "surname": "贾",
+      "count": 33
+    },
+    {
+      "surname": "刘",
+      "count": 27
+    },
+    {
+      "surname": "李",
+      "count": 14
+    },
+    {
+      "surname": "鲁",
+      "count": 12
+    },
+    {
+      "surname": "黄",
+      "count": 7
+    },
+    {
+      "surname": "王",
+      "count": 5
+    },
+    {
+      "surname": "杨",
+      "count": 4
+    },
+    {
+      "surname": "于",
+      "count": 1
+    },
+    {
+      "surname": "范",
+      "count": 1
+    },
+    {
+      "surname": "柴",
+      "count": 1
+    },
+    {
+      "surname": "闫",
+      "count": 1
+    },
+    {
+      "surname": "龙",
+      "count": 1
+    }
+  ]
+}

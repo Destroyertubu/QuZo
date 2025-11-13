@@ -1,0 +1,182 @@
+.sidebar {
+  height: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
+  opacity: 0.3;
+}
+
+.sidebar-header {
+  padding: 20px;
+  background: var(--primary-gradient);
+  color: white;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: headerPulse 6s ease-in-out infinite;
+}
+
+@keyframes headerPulse {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, -20px);
+  }
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar-menu {
+  flex: 1;
+  border-right: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  overflow-y: auto;
+}
+
+/* 自定义滚动条 */
+.sidebar-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-menu::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 菜单项样式 */
+.sidebar-menu :global(.ant-menu-item),
+.sidebar-menu :global(.ant-menu-submenu-title) {
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-menu :global(.ant-menu-item)::before,
+.sidebar-menu :global(.ant-menu-submenu-title)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.sidebar-menu :global(.ant-menu-item:hover),
+.sidebar-menu :global(.ant-menu-submenu-title:hover) {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.sidebar-menu :global(.ant-menu-item:hover)::before,
+.sidebar-menu :global(.ant-menu-submenu-title:hover)::before {
+  opacity: 1;
+}
+
+.sidebar-menu :global(.ant-menu-item-selected) {
+  background: var(--primary-gradient);
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.sidebar-menu :global(.ant-menu-item-selected)::before {
+  opacity: 0;
+}
+
+.sidebar-menu :global(.ant-menu-submenu-open) > :global(.ant-menu-submenu-title) {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-menu :global(.ant-menu-submenu) :global(.ant-menu-item) {
+  padding-left: 48px !important;
+}
+
+/* 图标样式 */
+.menu-icon {
+  font-size: 16px;
+  margin-right: 10px;
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+
+.menu-label {
+  font-size: 14px;
+}
+
+/* 展开图标 */
+.sidebar-menu :global(.ant-menu-submenu-arrow) {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* 子菜单背景 */
+.sidebar-menu :global(.ant-menu-sub) {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* 强制所有菜单文字为白色 */
+.sidebar-menu :global(.ant-menu-item) span,
+.sidebar-menu :global(.ant-menu-submenu-title) span,
+.sidebar-menu :global(.ant-menu-item-icon),
+.sidebar-menu :global(.ant-menu-title-content) {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.sidebar-menu :global(.ant-menu-item:hover) span,
+.sidebar-menu :global(.ant-menu-submenu-title:hover) span,
+.sidebar-menu :global(.ant-menu-item-selected) span,
+.sidebar-menu :global(.ant-menu-submenu-open) span {
+  color: #fff !important;
+}

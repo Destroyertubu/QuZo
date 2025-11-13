@@ -1,0 +1,220 @@
+.villager-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #e3f2fd;
+  background: linear-gradient(90deg, rgba(45, 183, 245, 0.4) 0%, rgba(45, 183, 245, 0.15) 100%);
+  padding: 8px 12px;
+  border-left: 3px solid #2db7f5;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(45, 183, 245, 0.2);
+}
+
+.search-input {
+  margin-bottom: 10px;
+}
+
+.search-input .ant-input {
+  background: rgba(20, 35, 55, 0.6);
+  border: 1px solid rgba(45, 183, 245, 0.4);
+  color: #e3f2fd;
+}
+
+.search-input .ant-input::placeholder {
+  color: rgba(227, 242, 253, 0.5);
+}
+
+.search-input .ant-input:focus,
+.search-input .ant-input:hover {
+  background: rgba(20, 35, 55, 0.8);
+  border-color: #2db7f5;
+  box-shadow: 0 0 8px rgba(45, 183, 245, 0.3);
+}
+
+.villager-items {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+
+.villager-items .ant-list-item {
+  padding: 0;
+  border: none;
+  margin-bottom: 8px;
+}
+
+.villager-card,
+.household-card {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(20, 35, 55, 0.7) 0%, rgba(15, 25, 40, 0.7) 100%);
+  border-radius: 6px;
+  border: 1px solid rgba(45, 183, 245, 0.3);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.villager-card:hover,
+.household-card:hover {
+  background: linear-gradient(135deg, rgba(25, 45, 70, 0.85) 0%, rgba(20, 35, 55, 0.85) 100%);
+  border-color: rgba(45, 183, 245, 0.6);
+  box-shadow: 0 0 15px rgba(45, 183, 245, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.household-card:active {
+  transform: translateY(0);
+  box-shadow: 0 0 8px rgba(45, 183, 245, 0.3);
+}
+
+.villager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.villager-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e3f2fd;
+  display: flex;
+  align-items: center;
+}
+
+.villager-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.info-row {
+  font-size: 11px;
+  color: rgba(227, 242, 253, 0.9);
+  display: flex;
+  align-items: center;
+}
+
+.info-label {
+  color: rgba(177, 217, 255, 0.8);
+  margin-right: 4px;
+}
+
+.info-value {
+  color: rgba(227, 242, 253, 0.95);
+}
+
+.villager-land {
+  padding-top: 6px;
+  border-top: 1px solid rgba(45, 183, 245, 0.3);
+  font-size: 11px;
+}
+
+.villager-land .ant-space-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.land-type {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.land-type.farmland {
+  background: rgba(255, 107, 107, 0.25);
+  color: #ffb3b3;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+}
+
+.land-type.homestead {
+  background: rgba(64, 169, 255, 0.25);
+  color: #8fc9ff;
+  border: 1px solid rgba(64, 169, 255, 0.4);
+}
+
+.land-count {
+  color: rgba(227, 242, 253, 0.85);
+  margin: 0 4px;
+}
+
+.land-area {
+  color: rgba(177, 217, 255, 0.8);
+}
+
+.list-footer {
+  padding-top: 8px;
+  border-top: 1px solid rgba(45, 183, 245, 0.3);
+  text-align: center;
+  font-size: 12px;
+  color: rgba(177, 217, 255, 0.75);
+}
+
+/* 户籍信息新样式 */
+.household-header {
+  margin-bottom: 8px;
+}
+
+.household-number {
+  margin-bottom: 4px;
+}
+
+.household-head {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e3f2fd;
+}
+
+.head-name {
+  font-size: 14px;
+}
+
+.head-title {
+  font-size: 11px;
+  color: rgba(177, 217, 255, 0.8);
+  font-weight: normal;
+  margin-left: 4px;
+}
+
+.household-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  padding: 6px 0;
+  border-top: 1px solid rgba(45, 183, 245, 0.25);
+  border-bottom: 1px solid rgba(45, 183, 245, 0.25);
+}
+
+.household-land {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 6px;
+}
+
+.land-item {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+}
+
+.land-label {
+  color: rgba(177, 217, 255, 0.8);
+  margin-right: 4px;
+}
+
+.land-value {
+  color: #5ec8ff;
+  font-weight: 600;
+}

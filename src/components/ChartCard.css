@@ -1,0 +1,95 @@
+.chart-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.chart-card.clickable {
+  cursor: pointer;
+}
+
+.chart-card.clickable:hover {
+  box-shadow: var(--shadow-md), 0 0 24px rgba(102, 126, 234, 0.25);
+  transform: translateY(-3px);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+.chart-card.clickable:hover::before {
+  opacity: 1;
+}
+
+.chart-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.chart-card-header h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+  letter-spacing: -0.02em;
+  transition: color var(--transition-fast);
+}
+
+.chart-card.clickable:hover .chart-card-header h4 {
+  color: var(--primary-color);
+}
+
+.expand-hint {
+  font-size: 12px;
+  color: var(--primary-color);
+  font-weight: 500;
+  opacity: 0;
+  transition: all var(--transition-base);
+  transform: translateX(-5px);
+}
+
+.chart-card.clickable:hover .expand-hint {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.chart-container {
+  width: 100%;
+}
+
+/* 小图样式 */
+.chart-card.small {
+  width: 100%;
+  flex: 1;
+}
+
+.chart-card.small .chart-container {
+  height: 200px !important;
+}
+
+/* 大图样式 */
+.chart-card.large {
+  width: 100%;
+}
+
+.chart-card.large .chart-container {
+  height: 400px !important;
+}

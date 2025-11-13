@@ -1,0 +1,220 @@
+.land-map {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-gradient);
+  opacity: 0.5;
+}
+
+.map-header h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-header h3::before {
+  content: '🗺️';
+  font-size: 20px;
+  filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.5));
+}
+
+.map-legend {
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-base);
+}
+
+.legend-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.legend-color {
+  width: 24px;
+  height: 18px;
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  opacity: 0.9;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.legend-item:hover .legend-color {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.legend-color.farmland {
+  background: #4ECDC4;
+  border-color: #2FB8AC;
+}
+
+.legend-color.homestead {
+  background: #FF6B6B;
+  border-color: #E53935;
+}
+
+.map-type-toggle {
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--primary-gradient);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-type-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.map-type-toggle:hover::before {
+  left: 100%;
+}
+
+.map-type-toggle:hover {
+  background: var(--primary-gradient-hover);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.map-type-toggle:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.map-canvas-container {
+  flex: 1;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.map-canvas-container:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Leaflet地图容器必须有明确的高度 */
+.map-canvas-container .leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+/* Leaflet控件样式调整 */
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: var(--shadow-md) !important;
+  border-radius: var(--radius-md) !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  background-color: white !important;
+  color: #333 !important;
+  border: none !important;
+  transition: all var(--transition-fast) !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  font-size: 20px !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  transform: scale(1.05);
+}
+
+.leaflet-control-zoom a:first-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Leaflet弹出窗口样式 */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.leaflet-popup-content {
+  margin: 16px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-sm);
+}
